@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+
+<p>{{user_info[0]}}さん こんにちは</p><br>
+<p>{{user_id}}さん こんにちは</p><br>
+
+
+
+<form action="/purchase_list" method="post">
+  <input type="submit" name="purchase" value="購入ページ">
+</form> 
+
+
+<form action="/cart" method="post">
+  <input type="hidden" name="id" value="{{user_id}}">
+  <input type="submit" name="purchase" value="カート">
+</form> 
+
+<div>
+  <a href="/logout">ログアウト</a>
+</div>
+
+{% endblock %}
