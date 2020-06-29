@@ -1,0 +1,410 @@
+@charset "UTF-8";
+html {
+	overflow-y: scroll; /* IEへの対応 http://www.htmq.com/style/overflow-y.shtml */
+	/*Internet Explorerが独自に追加したプロパティ*/
+	/*画面に収まりきれなかったときにスクロールして表示することを許可するか否か*/
+}
+/* リセットおまじない--------------------------------- */
+
+body, h1, h2, h3, h4, h5, p, ul, ol, li, dl, dt, dd {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	background: #fff;
+	text-align: center;
+	font-size: 16px;
+	line-height: 1.4;
+	min-width: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+li {
+	list-style: none;
+}
+a {
+	outline: none;
+	color: inherit;
+	text-decoration: none;
+}
+img {
+	border: 0px;
+	vertical-align: bottom;
+}
+/* --------------------------------------------------- */
+nav {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: -300px;
+	bottom: 0;
+	width: 300px;
+	background: #ffffff;
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	transition: .5s;
+	z-index: 3;
+  }
+  .open nav {
+	left: 0;
+  }
+  nav .inner {
+	padding: 25px;
+  }
+  nav .inner ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+  }
+  nav .inner ul li {
+	position: relative;
+	margin: 0;
+	border-bottom: 1px solid #333;
+  }
+  nav .inner ul li a {
+	display: block;
+	color: #333;
+	font-size: 14px;
+	padding: 1em;
+	text-decoration: none;
+	transition-duration: 0.2s;
+  }
+  nav .inner ul li a:hover {
+	background: #e4e4e4;
+  }
+  @media screen and (max-width: 767px) {
+	nav {
+	  left: -240px;
+	  width: 240px;
+	}
+  }
+  /*============
+  @keyframes
+  =============*/
+  @keyframes equalizer01 {
+	0% {
+	  width: 70%;
+	}
+	10% {
+	  width: 50%;
+	}
+	20% {
+	  width: 100%;
+	}
+	30% {
+	  width: 10%;
+	}
+	40% {
+	  width: 50%;
+	}
+	50% {
+	  width: 70%;
+	}
+	60% {
+	  width: 50%;
+	}
+	70% {
+	  width: 10%;
+	}
+	80% {
+	  width: 100%;
+	}
+	90% {
+	  width: 10%;
+	}
+	100% {
+	  width: 70%;
+	}
+  }
+  @keyframes equalizer02 {
+	0% {
+	  width: 30%;
+	}
+	10% {
+	  width: 20%;
+	}
+	20% {
+	  width: 40%;
+	}
+	30% {
+	  width: 10%;
+	}
+	40% {
+	  width: 20%;
+	}
+	50% {
+	  width: 30%;
+	}
+	60% {
+	  width: 20%;
+	}
+	70% {
+	  width: 10%;
+	}
+	80% {
+	  width: 40%;
+	}
+	90% {
+	  width: 10%;
+	}
+	100% {
+	  width: 30%;
+	}
+  }
+  /*============
+  .toggle_btn
+  =============*/
+  .toggle_btn {
+	display: block;
+	position: fixed;
+	top: 30px;
+	left: 30px;
+	width: 60px;
+	height: 30px;
+	transform: translate(0, 0);
+	transition: all .5s;
+	cursor: pointer;
+	z-index: 3;
+  }
+  .open .toggle_btn {
+	left: 330px;
+  }
+  .toggle_btn span {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 30px;
+	height: 2px;
+	background-color: #666;
+	transition: all .5s;
+  }
+  .toggle_btn span:nth-child(1) {
+	top: 5px;
+  }
+  .toggle_btn span:nth-child(2) {
+	top: 15px;
+  }
+  .toggle_btn span:nth-child(3) {
+	top: 25px;
+  }
+  .open .toggle_btn span {
+	background-color: #fff;
+	width: 30px;
+  }
+  .open .toggle_btn span:nth-child(1) {
+	transform: translate(0, 10px) rotate(-45deg);
+	animation: unset;
+  }
+  .open .toggle_btn span:nth-child(2) {
+	opacity: 0;
+	animation: unset;
+  }
+  .open .toggle_btn span:nth-child(3) {
+	transform: translate(0, -10px) rotate(45deg);
+	animation: unset;
+  }
+  @media screen and (max-width: 767px) {
+	.open .toggle_btn {
+	  left: 260px;
+	}
+  }
+  /*============
+  #mask
+  =============*/
+  #mask {
+	display: none;
+  }
+  .open #mask {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: .8;
+	z-index: 2;
+	cursor: pointer;
+	transition: all .5s;
+  }
+/* ここまで */
+  
+.headerbtn{
+	margin-right: 50px;
+}
+
+
+
+.headerbtn ul{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	background-color: transparent;
+	list-style: none;
+	
+}
+
+.btn-open {
+	display: inline-block;
+	width: 120px;
+	height:21px;
+	text-align: center;
+	/* background-color: #9ec34b; */
+	font-size: 13px;
+	line-height: 24px;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+	/* border: 2px solid #9ec34b; */
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+}
+.btn-open:after{
+	width: 100%;
+	height: 0;
+	content:"";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background : #FFF;
+	opacity: 0;
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	transition: .2s;
+	z-index: -1;
+}
+.btn-open:hover{
+	color: black;
+}
+.btn-open:hover:after{
+	height: 240%;
+	opacity: 1;
+}
+.btn-open:active:after{
+	height: 340%;
+	opacity: 1;
+}
+
+.headerbtn li{
+	text-align: center;
+	padding-right: 10px;
+	
+}
+
+
+#gamen{
+	min-height: 100vh;
+	position: relative;/*←相対位置*/
+	padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+.main{
+	padding: 0 200px;
+}
+
+header {
+	height: 60px;
+	background: #eeeaec;
+	text-align: center;
+	width: 100%;
+}
+
+/* 商品購入ページ */
+img.purchase_img {
+	height: 100px;
+	width: 150px;
+}
+
+/* 購入ページ */
+img.purchase_img2 {
+	margin-top: 100px;
+    height: 300px;
+    width: 400px;
+}
+
+.purchase_date{
+	margin: 100px 100px 0 100px;
+    float: right;
+    font-size: 30px;
+    height: 200px;
+	width: 300px;
+}
+
+.product_date{
+	margin-top: 20px;
+}
+
+.purchase_quantity {
+	width: 40px;
+}
+
+.product_description{
+	margin: 50px;
+	margin-top: 150px;
+	width: 1000px;
+}
+
+.product_Returns{
+	margin: 50px;
+	margin-top: 100px;
+	width: 1000px;
+}
+
+/* 商品一覧 */
+.purchase_list{
+	display: inline-block;
+	padding: 20px;
+	width: 20%;
+	border: solid;
+    border-color: black;
+}
+
+/* 購入履歴 */
+.contents_list{
+	display: inline-block;
+	padding: 20px;
+	width: 20%;
+	border: solid;
+    border-color: black;
+}
+
+/* アカウント登録ページ */
+#register_page{
+	width: 400px;
+    margin: 0 auto;
+    border: solid;
+    border-color: black;
+}
+
+.register_content{
+	width: 200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border: solid;
+    border-color: gray;
+    border-radius: 10px;
+}
+
+#register_button{
+    margin: 20px;
+
+}
+
+footer {
+	height: 50px;
+	width: 100%;
+    background-color: #eeeaec;
+    text-align: center;
+    padding: 10px 0;
+
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
+
+footer p {
+	font-size: 12px;
+	padding-top: 15px;
+	letter-spacing: 1px;
+}
