@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+
+
+
+{% for item in comment_list %}
+<img src="/static/img/{{item['商品画像']}}" alt="" class="purchase_img2">
+<div class="purchase_date">
+  <p class="product_date">商品名:{{item['商品名']}}</p>
+  <p class="product_date">価格(税抜き):{{item['税抜き価格']}}</p>
+  <form action="/purchase" method="post" class="product_date">
+    <input type="hidden" name="商品id" value="{{item['id']}}">
+    <input type="hidden" name="商品名" value="{{item['商品名']}}">
+    <input type="hidden" name="税抜き価格" value="{{item['税抜き価格']}}">
+    <input type="number" name="個数" value="1" class="purchase_quantity">
+    <input type="submit" name="purchase" value="直接購入">
+  </form>
+  <form action="/cart_in" method="post" class="product_date">
+    <input type="hidden" name="商品画像" value="{{item['商品画像']}}">
+    <input type="hidden" name="商品id" value="{{item['id']}}">
+    <input type="hidden" name="商品名" value="{{item['商品名']}}">
+    <input type="hidden" name="税抜き価格" value="{{item['税抜き価格']}}">
+    <input type="number" name="個数" value="1" class="purchase_quantity">
+    <input type="submit" name="purchase" value="カートに入れる">
+  </form>
+
+</div>
+
+<div class="product_description">
+  <p class="min_title">商品説明</p>
+  <p>商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ
+    商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ
+  </p>
+</div>
+
+<div class="product_Returns">
+  <p class="min_title">返品について</p>
+  <p>返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ
+    返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ
+  </p>
+</div>
+
+
+{% endfor %}
+
+
+
+{% endblock %}

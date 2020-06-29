@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<h1>登録済みユーザー</h1>
+{% for item in comment_list %}
+<div class="contents_list">
+    <p>user_id:{{item['user_id']}}</p>
+    <p>漢字氏名:{{item['漢字氏名']}}</p>
+    <p>カナ氏名:{{item['カナ氏名']}}</p>
+    <p>email:{{item['email']}}</p>
+    <p>password:{{item['password']}}</p>
+</div>
+
+
+
+{% endfor %}
+
+
+
+
+{% endblock %}
+

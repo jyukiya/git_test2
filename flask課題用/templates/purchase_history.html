@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<h1>購入履歴</h1>
+{% for item in comment_list %}
+<div class="contents_list">
+    <p>注文番号:{{item['注文番号']}}</p>
+    <p>購入者id:{{item['購入者id']}}</p>
+    <p>購入年月日:{{item['購入年月日']}}</p>
+    <p>商品id:{{item['商品id']}}</p>
+    <p>商品名:{{item['商品名']}}</p>
+    <p>数量:{{item['数量']}}</p>
+    <p>税抜き価格:{{item['税抜き価格']}}円</p>
+    <p>税込み価格:{{item['税込み価格']}}円</p>
+    <p>合計金額:{{item['合計金額']}}</p>
+
+</div>
+
+
+
+
+{% endfor %}
+
+
+
+
+
+{% endblock %}

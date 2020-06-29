@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<p>{{admin_info[0]}}さん こんにちは</p>
+
 
 <div>
   <a href="/purchase_history">購入履歴</a>
@@ -10,8 +12,8 @@
   <a href="/registered_users">ユーザー一覧</a>
 </div>
 
-<p>{{admin_info[0]}}さん こんにちは</p>
-<p>商品登録</p>
+
+<h1>商品登録</h1>
 <form action="/commodity_add" method="post" enctype="multipart/form-data">
   投稿者：{{admin_info[0]}}<br>
   <p>商品名</p>
@@ -22,14 +24,18 @@
   <input type="file" name="upload">
   <input type="submit" name="save" value="登録">
 </form>
-
-<p>商品一覧</p>
+<br>
+<br>
+<h1>商品一覧</h1>
 {% for item in comment_list %}
-<p>商品id:{{item['id']}}</p>
-<p>商品名:{{item['商品名']}}</p>
-<p>価格(税抜き):{{item['税抜き価格']}}</p>
-<p>価格(税込み):{{item['税込み価格']}}</p>
-<p>登録日時:{{item['登録日時']}}</p>
+<div class="contents_list">
+  <img src="/static/img/{{item['商品画像']}}" alt="" class="purchase_img">
+  <p>商品id:{{item['id']}}</p>
+  <p>商品名:{{item['商品名']}}</p>
+  <p>価格(税抜き):{{item['税抜き価格']}}円</p>
+  <p>価格(税込み):{{item['税込み価格']}}円</p>
+  <p>登録日時:{{item['登録日時']}}</p>
+</div>
 
 {% endfor %}
 
