@@ -129,7 +129,7 @@ def purchase_page(id):
         # print(id)
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
-        c.execute("select id,商品名,税抜き価格,税込み価格,商品画像 from 商品")
+        c.execute("select id,商品名,税抜き価格,税込み価格,商品画像 from 商品 where id =?", (id,))
         comment_list = []
         for row in c.fetchall():
             comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4]})

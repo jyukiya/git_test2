@@ -11,8 +11,9 @@
 {% for item in comment_list %}
 <img src="/static/img/{{item['商品画像']}}" alt="" class="purchase_img2">
 <div class="purchase_date">
-  <p class="product_date">商品名:{{item['商品名']}}</p>
-  <p class="product_date">価格(税抜き):{{item['税抜き価格']}}</p>
+  <p class="product_date" id="product_name">{{item['商品名']}}</p>
+  <hr>
+  <p class="product_price">￥{{item['税込み価格']}}（税込）</p>
   <form action="/purchase" method="post" class="product_date">
     <input type="hidden" name="商品id" value="{{item['id']}}">
     <input type="hidden" name="商品名" value="{{item['商品名']}}">
@@ -30,7 +31,7 @@
   </form>
 
 </div>
-
+<!-- 
 <div class="product_description">
   <p class="min_title">商品説明</p>
   <p>商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ
@@ -43,7 +44,7 @@
   <p>返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ
     返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ
   </p>
-</div>
+</div> -->
 
 
 {% endfor %}
