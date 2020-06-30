@@ -31,6 +31,13 @@ img {
 	vertical-align: bottom;
 }
 /* --------------------------------------------------- */
+header{
+	width: 100%;
+	height: 60px;
+	position: fixed;
+	z-index: 100;
+}
+/* ここからハンバーガーメニュー */
 nav {
 	display: block;
 	position: fixed;
@@ -292,23 +299,181 @@ nav {
 }
 
 
+
+
+
+.main{
+	min-height: 100vh;
+	/* height: 3000px; */
+    width: 100%;
+    background-color: rgba(0, 81, 255, 0.363);
+    justify-content: space-around;
+    padding-top: 0px;
+}
+
+/* スライドショー */
+.slide {
+	position: relative;
+	width: 100%;
+	height: 75vh;
+	overflow: hidden;
+	z-index: 10;
+}
+  
+  
+@keyframes slideshow{
+	0%{
+	  opacity: 0;
+	}
+	10%{
+	  opacity: 1;
+	}
+	28%{
+	  opacity: 1;
+	}
+	38%{
+	  opacity: 0;
+	}
+	100%{
+	  opacity: 0;
+	}
+  
+}
+  
+.slide img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: auto;
+	opacity: 0;
+	animation :slideshow 24s linear infinite;
+	z-index: 10;
+}
+  
+.slide img:nth-child(2){
+	animation-delay: 8s;
+}
+  
+.slide img:last-child{
+	animation-delay: 16s;
+}
+  /* スライドショー終わり */
+
+.toppic{
+	position: relative;
+	height: 300px;
+	width: 100%;
+	background-color: rgba(206, 122, 199, 0.918);
+}
+
+.inner {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.itemlist{
+	height: 800px;
+	width: 100%;
+	background-color: darkgrey;
+	display: flex;
+	flex-wrap: wrap;
+    margin-top: 4.75em;
+
+}
+
+.photo{
+	position: relative;
+	width: 100%;
+	height: 50%;
+	overflow: hidden;
+	z-index: 10;
+
+}
+.photo img{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: auto;
+	transform: translate(-50%, -50%);
+
+
+}
+.itemlist li{
+	height: 280px;
+	width: 250px;
+    margin: 30px;
+	background-color: thistle;
+	position: relative;
+	list-style: none;
+}
+
+dl{
+	position: absolute;
+	height: 125px;
+	width: 100%;
+	background-color: darkmagenta;
+	bottom: 0;
+
+}
+dd{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+	background-color: goldenrod;
+	text-align: center;
+}
+
+
+.csatxt{
+    height: 500px;
+    width: 100%;
+    background-color: rgba(19, 228, 36, 0.658);
+    justify-content: space-around;
+    padding-top: 0px;
+}
+.access{
+    height: 500px;
+    width: 100%;
+    background-color: rgba(228, 19, 19, 0.658);
+    justify-content: space-around;
+    padding-top: 0px;
+}
+.businessday{
+    height: 170px;
+    width: 100%;
+    background-color: rgba(172, 228, 19, 0.658);
+    justify-content: space-around;
+    padding-top: 0px;
+}
+
+
+
+
+/* ここから太一 */
+
 #gamen{
 	min-height: 100vh;
 	position: relative;/*←相対位置*/
-	padding-bottom: 120px;/*←footerの高さ*/
     box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
-.main{
-	padding: 0 200px;
+.maingamen{
+	padding: 60px 150px 150px 0;
+    width: 100%;
 }
 
-header {
+/* header {
 	height: 60px;
 	background: #eeeaec;
 	text-align: center;
 	width: 100%;
-}
+	z-index: 100;
+} */
 
 /* 商品購入ページ */
 img.purchase_img {
@@ -319,12 +484,12 @@ img.purchase_img {
 /* 購入ページ */
 img.purchase_img2 {
 	margin-top: 100px;
-    height: 300px;
-    width: 400px;
+    height: 400px;
+    width: 500px;
 }
 
 .purchase_date{
-	margin: 100px 100px 0 100px;
+	margin: 125px 100px 0 100px;
     float: right;
     font-size: 30px;
     height: 200px;
@@ -332,6 +497,7 @@ img.purchase_img2 {
 }
 
 .product_price{
+	margin-top: 25px;
 	color: rgb(235, 60, 29);
 }
 
@@ -385,7 +551,7 @@ img.purchase_img2 {
 	width: 400px;
     margin: 0 auto;
     border: solid;
-    border-color: black;
+    border-color: rgb(207, 209, 211);
 }
 
 .register_content{
@@ -394,7 +560,7 @@ img.purchase_img2 {
     padding-bottom: 20px;
     margin-top: 20px;
     border: solid;
-    border-color: gray;
+    border-color:rgb(207, 209, 211);
     border-radius: 10px;
 }
 

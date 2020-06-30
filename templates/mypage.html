@@ -1,29 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<div>
-
-<p>{{user_info[0]}}さん こんにちは</p><br>
-<!-- <p>{{user_id}}さん こんにちは</p><br> -->
+<div class="maingamen">
 
 
-
-<form action="/purchase_list" method="post">
-  <input type="submit" name="purchase" value="購入ページ">
-</form> 
+  <p>{{user_info[0]}}さん こんにちは</p><br>
+  <!-- <p>{{user_id}}さん こんにちは</p><br> -->
 
 
-<form action="/cart" method="post">
-  <input type="hidden" name="id" value="{{user_id}}">
-  <input type="submit" name="purchase" value="カート">
-</form> 
+
+  <form action="/purchase_list" method="post">
+    <input type="submit" name="purchase" value="購入ページ">
+  </form>
 
 
-<input type="button" onclick="location.href='logout'" value="ログアウト">
+  <form action="/cart" method="post">
+    <input type="hidden" name="id" value="{{user_id}}">
+    <input type="submit" name="purchase" value="カート">
+  </form>
 
-<!-- <div>
-  <a href="/logout">ログアウト</a>
-</div> -->
 
+  <input type="button" onclick="location.href='logout'" value="ログアウト">
+
+  
+</div>
 {% endblock %}
