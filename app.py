@@ -285,6 +285,22 @@ def cart_purchase():
     else:
          return redirect("/login")
 
+
+# カートから削除
+@app.route('/cart_out' , methods=["POST"])
+def del_task():
+    注文番号 = request.form.get("注文番号")
+    注文番号 = int(注文番号)
+    conn = sqlite3.connect('niseco.db')
+    c = conn.cursor()
+    c.execute("update カート set del_flag = 1 where 注文番号=?", (注文番号,))
+    conn.commit()
+    conn.close()
+    return redirect("/cart")
+
+
+
+
 # ここから管理人用
 
 # GET  /login => ログイン画面を表示

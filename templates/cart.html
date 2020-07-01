@@ -20,6 +20,12 @@
         <input type="hidden" name="合計金額" value="{{item['合計金額']}}">
         <input type="submit" name="purchase" value="購入">
       </form>
+      <form class="cart_out" action="/cart_out" method="post">
+        <input type="hidden" name="注文番号" value="{{item['注文番号']}}">
+        <input type="submit" name="cart_out" value="カートから削除">
+      </form>
+
+     
     </div>
 
   </div>
