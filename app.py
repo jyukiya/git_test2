@@ -182,7 +182,7 @@ def purchase():
 @app.route('/cart', methods=["GET", "POST"])
 def cart_page():
     if 'user_id' in session :
-        id = request.form.get("id")
+        id = session['user_id']
         # print(id)
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
