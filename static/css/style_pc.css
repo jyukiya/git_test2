@@ -475,77 +475,6 @@ dd{
 	z-index: 100;
 } */
 
-/* 商品購入ページ */
-img.purchase_img {
-	height: 100px;
-	width: 150px;
-}
-
-/* 購入ページ */
-img.purchase_img2 {
-	margin-top: 100px;
-    height: 400px;
-    width: 500px;
-}
-
-.purchase_date{
-	margin: 125px 100px 0 100px;
-    float: right;
-    font-size: 30px;
-    height: 200px;
-	width: 500px;
-}
-
-.product_price{
-	margin-top: 25px;
-	color: rgb(235, 60, 29);
-}
-
-.product_date{
-	margin-top: 20px;
-}
-
-.purchase_quantity {
-	width: 40px;
-}
-
-.product_description{
-	margin: 50px;
-	margin-top: 150px;
-	width: 1000px;
-}
-
-.product_Returns{
-	margin: 50px;
-	margin-top: 100px;
-	width: 1000px;
-}
-
-/* 商品一覧 */
-.purchase_list{
-	display: inline-block;
-    height: 200px;
-    padding: 20px;
-    width: 20%;
-    margin-top: 10px;
-    border: solid;
-    border-color: black;
-}
-
-#product_name{
-	margin: 10px;
-    height: 40px;
-}
-
-/* 購入履歴 */
-.contents_list{
-	display: inline-block;
-	padding: 20px;
-	width: 20%;
-	border: solid;
-    border-color: black;
-}
-
 /* アカウント登録＆ログインページ */
 #register_page{
 	width: 400px;
@@ -576,6 +505,136 @@ img.purchase_img2 {
 .kotira{
 	color: #0066c0;
 }
+
+
+
+/* 商品一覧 */
+.purchase_list{
+	display: inline-block;
+    height: 200px;
+    padding: 20px;
+    width: 20%;
+    margin-top: 10px;
+    border: solid;
+    border-color: black;
+}
+
+img.purchase_img {
+	height: 100px;
+	width: 150px;
+}
+
+#product_name{
+	margin: 10px;
+    height: 40px;
+}
+
+
+
+/* 購入ページ */
+.purchase_contents{
+	width: 1200px;
+    height: 400px;
+    margin: 25px 175px;
+    /* border: solid;
+    border-color: rgb(102, 102, 102); */
+
+}
+img.purchase_img2 {
+	margin-top: 100px;
+    margin: 0;
+    height: 400px;
+    width: 500px;
+    float: left;
+}
+
+.purchase_date{
+	margin: 40px 45px 0 0px;
+    float: right;
+    font-size: 30px;
+    height: 200px;
+    width: 600px;
+}
+
+.product_price{
+	margin-top: 25px;
+	color: rgb(235, 60, 29);
+}
+
+.product_date{
+	margin-top: 20px;
+}
+
+.purchase_quantity {
+	width: 40px;
+}
+
+.product_description{
+	margin: 50px;
+	margin-top: 150px;
+	width: 1000px;
+}
+
+.product_Returns{
+	margin: 50px;
+	margin-top: 100px;
+	width: 1000px;
+}
+
+.purchase_button{
+	width: 110px;
+}
+
+.cart_in_button{
+	width: 110px;
+}
+
+/* カートページ */
+#shopping_cart{
+	font-size: 25px;
+}
+
+.cart_contents{
+	width: 1000px;
+    height: 200px;
+    margin: 25px 250px;
+    border: solid;
+    border-color: rgb(102, 102, 102);
+}
+
+
+img.purchase_img3 {
+	margin-top: 50px;
+    margin: 0;
+    height: 200px;
+    width: 250px;
+    float: left;
+}
+
+
+.cart_date{
+	font-size: 20px;
+    margin: 0 0 0 300px;
+    height: 200px;
+    width: 600px;
+}
+
+#product_name_cart{
+	margin-top: 15px;
+    height: 25px;
+}
+
+
+/* 購入履歴 */
+.contents_list{
+	display: inline-block;
+	padding: 20px;
+	width: 20%;
+	border: solid;
+    border-color: black;
+}
+
+
 
 
 

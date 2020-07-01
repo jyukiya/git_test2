@@ -122,7 +122,7 @@ def purchase_list():
 
 
 # 購入ページ作成
-@app.route('/purchase/<int:id>', methods=["GET", "POST"])
+@app.route('/purchase_page/<int:id>', methods=["GET", "POST"])
 def purchase_page(id):
     if 'user_id' in session :
         id = request.form.get("id")
@@ -145,6 +145,8 @@ def purchase_page(id):
 @app.route('/purchase', methods=["GET", "POST"])
 def purchase():
     if 'user_id' in session :
+        id = request.form.get("id")
+        id=int(id)
         time = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
         user_id = session['user_id']
         print(user_id)
@@ -173,6 +175,9 @@ def purchase():
         conn.commit()
         conn.close()
         return redirect('/purchase_list')
+        # return redirect('/purchase_page/id',id=id)
+        # return 'Hello world'
+        # return render_template('purchase.html')
 
     else:
          return redirect("/login")
@@ -186,10 +191,10 @@ def cart_page():
         # print(id)
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
-        c.execute("select 注文番号,購入者id,追加年月日,商品id,商品名,数量,税抜き価格,合計金額,商品画像 from カート where 購入者id=? and del_flag = 0",(id,))
+        c.execute("select 注文番号,購入者id,追加年月日,商品id,商品名,数量,税抜き価格,税込み価格,合計金額,商品画像 from カート where 購入者id=? and del_flag = 0",(id,))
         comment_list = []
         for row in c.fetchall():
-            comment_list.append({"注文番号": row[0],"購入者id": row[1],"追加年月日": row[2],"商品id": row[3],"商品名": row[4],"数量": row[5],"税抜き価格": row[6],"合計金額": row[7],"商品画像": row[8]})
+            comment_list.append({"注文番号": row[0],"購入者id": row[1],"追加年月日": row[2],"商品id": row[3],"商品名": row[4],"数量": row[5],"税抜き価格": row[6],"税込み価格": row[7], "合計金額": row[8],"商品画像": row[9]})
             
         c.close()
         return render_template('cart.html' , comment_list = comment_list)
@@ -244,6 +249,8 @@ def cart_purchase():
         time = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
         user_id = session['user_id']
         print(user_id)
+        注文番号 = request.form.get("注文番号")
+        print(注文番号)
         商品id = request.form.get("商品id")
         print(商品id)
         商品名 = request.form.get("商品名")
@@ -265,11 +272,10 @@ def cart_purchase():
         
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
+        c.execute("update カート set del_flag = 1 where 注文番号=?", (注文番号,))
         c.execute("insert into 購入履歴 values (null,?,?,?,?,?,?,?,?)",(user_id,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,))
       
 
-        注文番号 = request.form.get("注文番号")
-        c.execute("update カート set del_flag = 1 where 注文番号=?", (注文番号,))
         conn.commit()
         conn.close()
         # return redirect('/purchase_list')
