@@ -354,6 +354,15 @@ $(function () {  // ここはお約束
   // });
 
 
+  $('.cart_out').click(function () {
+    if (!confirm('本当に削除しますか？')) {
+      return false;
+    }
+    else {
+      location.href = $(this).attr('href');
+    }
+  })
+
 });
 
 $(function() {

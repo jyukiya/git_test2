@@ -611,6 +611,10 @@ img.purchase_img3 {
     float: left;
 }
 
+.cart_product_price{
+	margin-top: 15px;
+    color: rgb(235, 60, 29);
+}
 
 .cart_date{
 	font-size: 20px;
@@ -622,6 +626,10 @@ img.purchase_img3 {
 #product_name_cart{
 	margin-top: 15px;
     height: 25px;
+}
+
+.cart_quantity{
+	height:30px;
 }
 
 
