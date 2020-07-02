@@ -626,9 +626,17 @@ img.purchase_img2 {
 }
 
 #kigen{
+	width: 200px;
+    float: left;
+    border: solid;
+    border-color: #e5e5e5;
+}
+
+#hozon{
 	border: solid;
 	border-color: #e5e5e5;
 }
+
 
 
 
