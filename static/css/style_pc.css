@@ -477,7 +477,7 @@ dd{
 
 /* アカウント登録＆ログインページ */
 #register_page{
-	width: 400px;
+	width: 350px;
     margin: 0 auto;
     border: solid;
 	border-color: rgb(207, 209, 211);
