@@ -36,7 +36,7 @@ def register():
     #  登録ページを表示させる
     if request.method == "GET":
         if 'user_id' in session :
-            return redirect ('/mypage')
+            return redirect ('/prime')
         else:
             return render_template("register.html")
     # ここからPOSTの処理
@@ -61,7 +61,7 @@ def register():
 def login():
     if request.method == "GET":
         if 'user_id' in session :
-            return redirect("/mypage")
+            return redirect("/prime")
         else:
             return render_template("login.html")
     else:
@@ -83,7 +83,7 @@ def login():
             return render_template("login.html")
         else:
             session['user_id'] = user_id[0]
-            return redirect("/mypage")
+            return redirect("/prime")
 
 # ログアウト機能
 @app.route("/logout")
@@ -94,8 +94,8 @@ def logout():
    
 
 # 会員用のページ
-@app.route('/mypage')
-def mypage():
+@app.route('/prime')
+def prime():
     if 'user_id' in session :
         # クッキーからuser_idを取得
         user_id = session['user_id']
@@ -107,34 +107,39 @@ def mypage():
         # fetchoneはタプル型
         user_info = c.fetchone()
         
-        c.close()
-        return render_template('mypage.html' , user_info = user_info , user_id=user_id)
-    else:
-        return redirect("/login")
 
-
-# 商品ページ作成
-@app.route('/purchase_list', methods=["GET", "POST"])
-def purchase_list():
-    if 'user_id' in session :
-        conn = sqlite3.connect('niseco.db')
-        c = conn.cursor()
         c.execute("select id,商品名,税抜き価格,税込み価格,商品画像 from 商品")
         comment_list = []
         for row in c.fetchall():
             comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4]})
 
         c.close()
-        return render_template('purchase_list.html' , comment_list = comment_list)
-        # return render_template('purchase_list.html')
+        return render_template('prime.html' , user_info = user_info , user_id=user_id , comment_list = comment_list)
     else:
-         return redirect("/login")
+        return redirect("/login")
+
+
+# # 商品ページ作成
+# @app.route('/purchase_list', methods=["GET", "POST"])
+# def purchase_list():
+#     if 'user_id' in session :
+#         conn = sqlite3.connect('niseco.db')
+#         c = conn.cursor()
+#         c.execute("select id,商品名,税抜き価格,税込み価格,商品画像 from 商品")
+#         comment_list = []
+#         for row in c.fetchall():
+#             comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4]})
+
+#         c.close()
+#         return render_template('purchase_list.html' , comment_list = comment_list)
+#         # return render_template('purchase_list.html')
+#     else:
+#          return redirect("/login")
 
 
 # 購入ページ作成
 @app.route('/purchase_page/<int:id>', methods=["GET", "POST"])
 def purchase_page(id):
-    if 'user_id' in session :
         id = request.form.get("id")
         # print(id)
         conn = sqlite3.connect('niseco.db')
@@ -147,13 +152,73 @@ def purchase_page(id):
         c.close()
         return render_template('purchase.html' , comment_list = comment_list)
 
+
+# 会員購入ページ作成
+@app.route('/purchase_page_prime/<int:id>', methods=["GET", "POST"])
+def purchase_page_prime(id):
+    if 'user_id' in session :
+        id = request.form.get("id")
+        # print(id)
+        conn = sqlite3.connect('niseco.db')
+        c = conn.cursor()
+        c.execute("select id,商品名,税抜き価格,税込み価格,商品画像,商品説明,栄養成分表示,原材料,賞味期限 from 商品 where id =?", (id,))
+        comment_list = []
+        for row in c.fetchall():
+            comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4], "商品説明": row[5], "栄養成分表示": row[6], "原材料": row[7], "賞味期限": row[8]})
+            
+        c.close()
+        return render_template('purchase_prime.html' , comment_list = comment_list)
+
     else:
          return redirect("/login")
-
 
 # 購入システム作成
 @app.route('/purchase', methods=["GET", "POST"])
 def purchase():
+        id = request.form.get("id")
+        id=int(id)
+        time = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+        user_id = 0
+        print(user_id)
+        商品id = request.form.get("商品id")
+        print(商品id)
+        商品名 = request.form.get("商品名")
+        print(商品名)
+        税抜き価格 = request.form.get("税抜き価格")
+        print(税抜き価格)
+        個数 = request.form.get("個数")
+        print(個数)
+
+        税抜き価格=int(税抜き価格)
+        個数=int(個数)
+
+        # 税込み価格の計算
+        税込み価格 = 税抜き価格/10+税抜き価格
+        print(税込み価格)
+        # 合計金額の計算
+        合計金額 = 税込み価格*個数
+
+        
+        conn = sqlite3.connect('niseco.db')
+        c = conn.cursor()
+
+        c.execute("select 漢字氏名 from user where id =?",(user_id,))
+        購入者名=c.fetchone()
+        購入者名=購入者名[0]
+        購入者名=str(購入者名)
+        # print(購入者名)
+        c.execute("insert into 購入履歴 values (null,?,?,?,?,?,?,?,?,?)",(user_id,購入者名,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,))
+        conn.commit()
+        conn.close()
+        return redirect('/')
+        # return redirect('/purchase_page/id',id=id)
+        # return 'Hello world'
+        # return render_template('purchase.html')
+
+
+# 会員用購入システム作成
+@app.route('/purchase_prime', methods=["GET", "POST"])
+def purchase_prime():
     if 'user_id' in session :
         id = request.form.get("id")
         id=int(id)
@@ -190,14 +255,10 @@ def purchase():
         c.execute("insert into 購入履歴 values (null,?,?,?,?,?,?,?,?,?)",(user_id,購入者名,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,))
         conn.commit()
         conn.close()
-        return redirect('/purchase_list')
-        # return redirect('/purchase_page/id',id=id)
-        # return 'Hello world'
-        # return render_template('purchase.html')
+        return redirect('/prime')
 
     else:
          return redirect("/login")
-
 
 # カートページ
 @app.route('/cart', methods=["GET", "POST"])
@@ -223,6 +284,41 @@ def cart_page():
 # カートに追加する動き
 @app.route('/cart_in', methods=["GET", "POST"])
 def cart_in():
+        time = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+        user_id = 0
+        print(user_id)
+        商品id = request.form.get("商品id")
+        print(商品id)
+        商品名 = request.form.get("商品名")
+        print(商品名)
+        税抜き価格 = request.form.get("税抜き価格")
+        print(税抜き価格)
+        個数 = request.form.get("個数")
+        print(個数)
+        商品画像 = request.form.get("商品画像")
+        print(商品画像)
+
+        税抜き価格=int(税抜き価格)
+        個数=int(個数)
+        # 税込み価格の計算
+        税込み価格 = 税抜き価格/10+税抜き価格
+        print(税込み価格)
+        # 合計金額の計算
+        合計金額 = 税込み価格*個数
+
+        
+        conn = sqlite3.connect('niseco.db')
+        c = conn.cursor()
+        c.execute("insert into カート values (null,?,?,?,?,?,?,?,?,?,0)",(user_id,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,商品画像,))
+        conn.commit()
+        conn.close()
+        return redirect('/')
+        # return render_template('purchase.html')
+
+
+# 会員カートに追加する動き
+@app.route('/cart_in_prime', methods=["GET", "POST"])
+def cart_in_prime():
     if 'user_id' in session :
         time = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
         user_id = session['user_id']
@@ -252,11 +348,10 @@ def cart_in():
         c.execute("insert into カート values (null,?,?,?,?,?,?,?,?,?,0)",(user_id,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,商品画像,))
         conn.commit()
         conn.close()
-        return redirect('/purchase_list')
-        # return render_template('purchase.html')
+        return redirect('/prime')
 
     else:
-         return redirect("/login")
+         return redirect("/login")        
 
 # カート用の購入システム
 @app.route('/cart_purchase', methods=["GET", "POST"])

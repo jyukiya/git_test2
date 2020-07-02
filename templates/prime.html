@@ -27,7 +27,7 @@
 		<div class="itemlist">
 			{% for item in comment_list %}
 			<li>
-				<form action="/purchase_page/{{item['id']}}" method="post">
+				<form action="/purchase_page_prime/{{item['id']}}" method="post">
 					<input type="hidden" name="id" value="{{item['id']}}">
 					<input type="image" src="/static/img/{{item['商品画像']}}" alt="送信する" class="purchase_img">
 				</form>
@@ -48,7 +48,7 @@
 		<p>ACCESS</p>
 		<a target="_blank" href="http://maps.google.com/maps?q=42.8097991%2C140.6854601">
 			<img
-				src="../static/img/map.png">
+				src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBoGsGWcBKf3SIB5GxguNjZVD2kTpGl-wM&amp;markers=42.8097991%2C140.6854601&amp;zoom=18&amp;size=1000x1000&amp;scale=2&amp;signature=0psE5KDEaVBw0dL9CP24vJGTRuo=">
 			<span>Googleマップを表示</span>
 		</a>
 		<table width="100%" cellspacing="0" cellpadding="0" border="0" class="table_detail">
