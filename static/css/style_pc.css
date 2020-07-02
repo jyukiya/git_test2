@@ -1,4 +1,36 @@
+@charset "UTF-8";
+html {
+	overflow-y: scroll; /* IEへの対応 http://www.htmq.com/style/overflow-y.shtml */
+	/*Internet Explorerが独自に追加したプロパティ*/
+	/*画面に収まりきれなかったときにスクロールして表示することを許可するか否か*/
+}
+/* リセットおまじない--------------------------------- */
 
+body, h1, h2, h3, h4, h5, p, ul, ol, li, dl, dt, dd {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	background: #fff;
+	text-align: center;
+	font-size: 16px;
+	line-height: 1.4;
+	min-width: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+li {
+	list-style: none;
+}
+a {
+	outline: none;
+	color: inherit;
+	text-decoration: none;
+}
+img {
+	border: 0px;
+	vertical-align: bottom;
+}
+/* --------------------------------------------------- */
 header{
 	width: 100%;
 	height: 60px;
@@ -375,13 +407,14 @@ h1{
 	font-family: "FOT-筑紫Aオールド明朝 Pr6 R", "ヒラギノ明朝 Pro W3", "ＭＳ Ｐ明朝", "MS PMincho", "Hiragino Mincho Pro", serif;
 }
 .itemlist{
-	height: 800px;
-	width: 100%;
-	/* background-color: darkgrey; */
-	display: flex;
-	flex-wrap: wrap;
-	margin-top: 1.75em;
-	padding-right: 0%;
+	max-height: 800px;
+    width: 100%;
+    /* background-color: darkgrey; */
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2.75em;
+    margin-top: 1.75em;
+    padding-right: 0%;
 
 }
 
@@ -650,4 +683,269 @@ footer .inner {
 
 .inner a {
 	color: #3a3a3a;
+}
+
+
+
+
+
+/* ここから太一 */
+
+#gamen{
+	min-height: 100vh;
+	position: relative;/*←相対位置*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+.maingamen{
+	padding: 60px 150px 150px 0;
+    width: 100%;
+}
+
+/* header {
+	height: 60px;
+	background: #eeeaec;
+	text-align: center;
+	width: 100%;
+	z-index: 100;
+} */
+
+/* アカウント登録＆ログインページ */
+#register_page{
+	width: 350px;
+    margin: 0 auto;
+    border: solid;
+	border-color: rgb(207, 209, 211);
+	border-radius: 10px;
+}
+
+.register_content{
+	width: 200px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border: solid;
+    border-color:rgb(207, 209, 211);
+    border-radius: 10px;
+}
+
+#register_button{
+    margin: 20px;
+}
+
+#login_button{
+    margin: 20px;
+}
+
+.kotira{
+	color: #0066c0;
+}
+
+
+
+/* 商品一覧 */
+.purchase_list{
+	display: inline-block;
+    height: 200px;
+    padding: 20px;
+    width: 20%;
+    margin-top: 10px;
+    border: solid;
+    border-color: black;
+}
+
+.purchase_img {
+	height: 100px;
+	width: 150px;
+}
+
+#product_name{
+	margin: 10px;
+    height: 40px;
+}
+
+
+
+/* 購入ページ */
+.purchase_contents{
+	width: 1200px;
+    height: 400px;
+    margin: 25px 175px;
+    /* border: solid;
+    border-color: rgb(102, 102, 102); */
+
+}
+img.purchase_img2 {
+	margin-top: 100px;
+    margin: 0;
+    height: 400px;
+    width: 500px;
+    float: left;
+}
+
+.purchase_date{
+	margin: 40px 45px 0 0px;
+    float: right;
+    font-size: 30px;
+    height: 200px;
+    width: 600px;
+}
+
+.product_price{
+	margin-top: 35px;
+	color: rgb(235, 60, 29);
+}
+
+.product_date{
+	margin-top: 30px;
+}
+
+.purchase_quantity {
+	width: 40px;
+	height: 20px;
+}
+
+.product_description{
+	margin: 50px;
+	margin-top: 150px;
+	width: 1000px;
+}
+
+.product_Returns{
+	margin: 50px;
+	margin-top: 100px;
+	width: 1000px;
+}
+
+.purchase_button{
+	width: 110px;
+}
+
+.cart_in_button{
+	width: 110px;
+}
+
+#about_product{
+	width: 1200px;
+	margin: 90px 175px 25px 175px;
+	text-align: left;
+	border: solid;
+    border-color: #e5e5e5;
+}
+
+.min_title{
+	font-size: 25px;
+}
+
+.setsumei_naiyou{
+	font-size: 20px;
+}
+
+.naiyou{
+	font-size: 15px;
+}
+
+#setsumei{
+	border: solid;
+	border-color: #e5e5e5;
+}
+
+#eiyou{
+	border: solid;
+	border-color: #e5e5e5;
+}
+
+#zairyou{
+	border: solid;
+	border-color: #e5e5e5;
+}
+
+#kigen{
+	width: 200px;
+    float: left;
+    border: solid;
+    border-color: #e5e5e5;
+}
+
+#hozon{
+	border: solid;
+	border-color: #e5e5e5;
+}
+
+
+
+
+/* カートページ */
+#shopping_cart{
+	font-size: 25px;
+}
+
+.cart_contents{
+	width: 1000px;
+    height: 200px;
+    margin: 25px 250px;
+    border: solid;
+    border-color: rgb(102, 102, 102);
+}
+
+
+img.purchase_img3 {
+	margin-top: 50px;
+    margin: 0;
+    height: 200px;
+    width: 250px;
+    float: left;
+}
+
+.cart_product_price{
+	margin-top: 15px;
+    color: rgb(235, 60, 29);
+}
+
+.cart_date{
+	font-size: 20px;
+    margin: 0 0 0 300px;
+    height: 200px;
+    width: 600px;
+}
+
+#product_name_cart{
+	margin-top: 15px;
+    height: 25px;
+}
+
+.cart_quantity{
+	height:30px;
+}
+
+
+/* 登録済み商品 */
+#syouhin_touroku{
+	margin: 0 150px;
+}
+
+
+
+table{
+	margin: auto;
+}
+
+/* 購入履歴 */
+.contents_list{
+	display: inline-block;
+	padding: 20px;
+	width: 20%;
+	border: solid;
+    border-color: black;
+}
+
+
+text itemName price
+
+.text .itemName{
+	margin: 5px;
+}
+
+.text .price{
+	margin: 5px;
 }

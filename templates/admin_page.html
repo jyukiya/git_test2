@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="maingamen">
+
+  <!-- <p>{{admin_info[0]}}さん こんにちは</p> -->
+
+
+  <div>
+    <a href="/purchase_history">購入履歴</a>
+  </div>
+
+  <div>
+    <a href="/registered_users">ユーザー一覧</a>
+  </div>
+
+
+  <h1>商品登録</h1>
+  <div id="syouhin_touroku">
+    <form action="/commodity_add" method="post" enctype="multipart/form-data">
+      投稿者：{{admin_info[0]}}
+      <br>
+      <br>
+      <p>商品名</p>
+      <input type="text" name="商品名">
+      <br>
+      <br>
+
+      <p>税抜き価格</p>
+      <p><input type="number" name="税抜き価格" value="1" class="purchase_quantity">円</p>
+      <br>
+      <br>
+      <p>画像指定</p>
+      <input type="file" name="upload">
+      <br>
+      <br>
+      <p>商品説明</p>
+      <textarea name="商品説明" class="admin_textarea" cols="30" rows="4"></textarea>
+      <br>
+      <p>栄養成分表示</p>
+      <textarea name="栄養成分表示" class="admin_textarea" cols="30" rows="4"></textarea>
+      <br>
+      <p>原材料</p>
+      <textarea name="原材料" class="admin_textarea" cols="30" rows="4"></textarea>
+      <br>
+      <p>賞味期限</p>
+      <input type="text" name="賞味期限">
+      <br>
+      <input type="submit" name="save" value="登録">
+    </form>
+  </div>
+  <br>
+  <br>
+  <h1>商品一覧</h1>
+  <table border="1">
+    <tr>
+      <th>商品名</th>
+      <th>価格(税抜き)</th>
+      <th>価格(税込み)</th>
+      <th>登録日時</th>
+    </tr>
+    {% for item in comment_list %}
+
+
+    <tr>
+      <td>{{item['商品名']}}</td>
+      <td>{{item['税抜き価格']}}円</td>
+      <td>{{item['税込み価格']}}円</td>
+      <td>{{item['税込み価格']}}</td>
+    </tr>
+
+
+    {% endfor %}
+  </table>
+
+
+
+
+</div>
+{% endblock %}

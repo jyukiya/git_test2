@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="maingamen">
+  <h1>会員ログイン</h1>
+  <div id="register_page">
+    <form action="/login" method="post">
+      <div class="register_content">
+        メールアドレス<br>
+        <input type="text" name="email"><br>
+      </div>
+      <div class="register_content">
+        パスワード<br>
+        <input type="password" name="password"><br>
+      </div>
+      
+      <input type="submit" value="ログイン" id="login_button">
+    </form>
+  </div>
+
+  <br>
+  <p>新規登録される方は<span class="kotira"><a href="/register">こちら</a></span></p>
+
+</div>
+{% endblock %}

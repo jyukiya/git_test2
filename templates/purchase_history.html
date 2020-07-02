@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="maingamen">
+
+
+
+    <h1>購入履歴</h1>
+    <table border="1">
+        <tr>
+          <th>注文番号</th>
+          <th>購入者id</th>
+          <th>購入者名</th>
+          <th>購入年月日</th>
+          <th>商品id</th>
+          <th>商品名</th>
+          <th>数量</th>
+          <th>税抜き価格</th>
+          <th>税込み価格</th>
+          <th>合計金額</th>
+        </tr>
+        {% for item in comment_list %}
+    
+    
+        <tr>
+          <td>{{item['注文番号']}}</td>
+          <td>{{item['購入者id']}}</td>
+          <td>{{item['購入者名']}}</td>
+          <td>{{item['購入年月日']}}</td>
+          <td>{{item['商品id']}}</td>
+          <td>{{item['商品名']}}</td>
+          <td>{{item['数量']}}</td>
+          <td>{{item['税抜き価格']}}円</td>
+          <td>{{item['税込み価格']}}円</td>
+          <td>{{item['合計金額']}}円</td>
+        </tr>
+    
+    
+        {% endfor %}
+      </table>
+
+
+</div>
+{% endblock %}

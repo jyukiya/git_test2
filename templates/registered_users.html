@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="maingamen">
+
+
+    <h1>登録済みユーザー</h1>
+    <table border="1">
+        <tr>
+          <th>user_id</th>
+          <th>漢字氏名</th>
+          <th>カナ氏名</th>
+          <th>email</th>
+          <th>password</th>
+        </tr>
+        {% for item in comment_list %}
+    
+    
+        <tr>
+          <td>{{item['user_id']}}</td>
+          <td>{{item['漢字氏名']}}</td>
+          <td>{{item['カナ氏名']}}</td>
+          <td>{{item['email']}}</td>
+          <td>{{item['password']}}</td>
+        </tr>
+    
+    
+        {% endfor %}
+      </table>
+
+
+
+</div>
+{% endblock %}

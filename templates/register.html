@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="maingamen">
+
+
+  <h1>新規登録</h1>
+  <div id="register_page">
+    <form action="/register" method="post">
+      <div class="register_content">
+        名前<br>
+        <input type="text" name="name" required><br>
+      </div>
+      <div class="register_content">
+        フリガナ<br>
+        <input type="text" name="hurigana" required><br>
+      </div>
+      <div class="register_content">
+        メールアドレス<br>
+        <input type="text" name="email" required><br>
+      </div>
+      <div class="register_content">
+        パスワード<br>
+        <input type="password" name="password" required><br>
+      </div>
+      <div class="register_content">
+        性別<br>
+        <input type="radio" name="gender" value="男" required>男
+        <input type="radio" name="gender" value="女">女
+        <input type="radio" name="gender" value="回答しない">回答しない <br>
+      </div>
+
+      <input type="submit" name="save" value="登録" id="register_button">
+    </form>
+  </div>
+
+  <br>
+  <p>登録されている方は<span class="kotira"><a href="/login">こちら</a></span></p>
+  
+
+</div>
+{% endblock %}
