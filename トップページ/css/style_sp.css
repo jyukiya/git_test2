@@ -1,0 +1,566 @@
+header{
+	width: 100%;
+	height: 60px;
+	position: fixed;
+	z-index: 100;
+}
+/* ここからハンバーガーメニュー */
+nav {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: -300px;
+	bottom: 0;
+	width: 300px;
+	background: #ffffff;
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	transition: .5s;
+	z-index: 3;
+  }
+  .open nav {
+	left: 0;
+  }
+  nav .inner {
+	padding: 25px;
+  }
+  nav .inner ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+  }
+  nav .inner ul li {
+	position: relative;
+	margin: 0;
+	border-bottom: 1px solid #333;
+  }
+  nav .inner ul li a {
+	display: block;
+	color: #333;
+	font-size: 14px;
+	padding: 1em;
+	text-decoration: none;
+	transition-duration: 0.2s;
+  }
+  nav .inner ul li a:hover {
+	background: #e4e4e4;
+  }
+  @media screen and (max-width: 767px) {
+	nav {
+	  left: -240px;
+	  width: 240px;
+	}
+  }
+  /*============
+  @keyframes
+  =============*/
+  @keyframes equalizer01 {
+	0% {
+	  width: 70%;
+	}
+	10% {
+	  width: 50%;
+	}
+	20% {
+	  width: 100%;
+	}
+	30% {
+	  width: 10%;
+	}
+	40% {
+	  width: 50%;
+	}
+	50% {
+	  width: 70%;
+	}
+	60% {
+	  width: 50%;
+	}
+	70% {
+	  width: 10%;
+	}
+	80% {
+	  width: 100%;
+	}
+	90% {
+	  width: 10%;
+	}
+	100% {
+	  width: 70%;
+	}
+  }
+  @keyframes equalizer02 {
+	0% {
+	  width: 30%;
+	}
+	10% {
+	  width: 20%;
+	}
+	20% {
+	  width: 40%;
+	}
+	30% {
+	  width: 10%;
+	}
+	40% {
+	  width: 20%;
+	}
+	50% {
+	  width: 30%;
+	}
+	60% {
+	  width: 20%;
+	}
+	70% {
+	  width: 10%;
+	}
+	80% {
+	  width: 40%;
+	}
+	90% {
+	  width: 10%;
+	}
+	100% {
+	  width: 30%;
+	}
+  }
+  /*============
+  .toggle_btn
+  =============*/
+  .toggle_btn {
+	display: block;
+	position: fixed;
+	top: 30px;
+	left: 30px;
+	width: 60px;
+	height: 30px;
+	transform: translate(0, 0);
+	transition: all .5s;
+	cursor: pointer;
+	z-index: 3;
+  }
+  .open .toggle_btn {
+	left: 330px;
+  }
+  .toggle_btn span {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 30px;
+	height: 2px;
+	background-color: #666;
+	transition: all .5s;
+  }
+  .toggle_btn span:nth-child(1) {
+	top: 5px;
+  }
+  .toggle_btn span:nth-child(2) {
+	top: 15px;
+  }
+  .toggle_btn span:nth-child(3) {
+	top: 25px;
+  }
+  .open .toggle_btn span {
+	background-color: #fff;
+	width: 30px;
+  }
+  .open .toggle_btn span:nth-child(1) {
+	transform: translate(0, 10px) rotate(-45deg);
+	animation: unset;
+  }
+  .open .toggle_btn span:nth-child(2) {
+	opacity: 0;
+	animation: unset;
+  }
+  .open .toggle_btn span:nth-child(3) {
+	transform: translate(0, -10px) rotate(45deg);
+	animation: unset;
+  }
+  @media screen and (max-width: 767px) {
+	.open .toggle_btn {
+	  left: 260px;
+	}
+  }
+  /*============
+  #mask
+  =============*/
+  #mask {
+	display: none;
+  }
+  .open #mask {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: .8;
+	z-index: 2;
+	cursor: pointer;
+	transition: all .5s;
+  }
+/* ここまで */
+  
+.headerbtn{
+	margin-right: 50px;
+}
+
+
+
+.headerbtn ul{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	background-color: transparent;
+	list-style: none;
+	
+}
+
+.btn-open {
+	display: inline-block;
+	width: 120px;
+	height:21px;
+	text-align: center;
+	/* background-color: #9ec34b; */
+	font-size: 13px;
+	line-height: 24px;
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+	/* border: 2px solid #9ec34b; */
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+}
+.btn-open:after{
+	width: 100%;
+	height: 0;
+	content:"";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background : black;
+	opacity: 0;
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	transition: .2s;
+	z-index: -1;
+}
+.btn-open:hover{
+	color: whitesmoke;
+}
+.btn-open:hover:after{
+	height: 240%;
+	opacity: 1;
+}
+.btn-open:active:after{
+	height: 340%;
+	opacity: 1;
+}
+
+.headerbtn li{
+	text-align: center;
+	padding-right: 10px;
+	
+}
+/* ヘッダーここまで */
+
+
+
+
+
+.main{
+	height: 4000px;
+    width: 100%;
+    background-color: rgba(0, 81, 255, 0.363);
+    justify-content: space-around;
+    padding-top: 0px;
+}
+
+/* スライドショー */
+.slide {
+	position: relative;
+	width: 100%;
+	height: 75vh;
+	overflow: hidden;
+	z-index: 10;
+}
+  
+  
+@keyframes slideshow{
+	0%{
+	  opacity: 0;
+	}
+	10%{
+	  opacity: 1;
+	}
+	28%{
+	  opacity: 1;
+	}
+	38%{
+	  opacity: 0;
+	}
+	100%{
+	  opacity: 0;
+	}
+  
+}
+  
+.slide img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	height: auto;
+	opacity: 0;
+	animation :slideshow 24s linear infinite;
+	z-index: 10;
+}
+  
+.slide img:nth-child(2){
+	animation-delay: 8s;
+}
+  
+.slide img:last-child{
+	animation-delay: 16s;
+}
+  /* スライドショー終わり */
+
+.toppic{
+	position: relative;
+	height: 300px;
+	width: 100%;
+	text-align: center;
+}
+
+h1{
+	margin: 0 auto;
+}
+
+.inner {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.inner .title{
+	width: 100%;
+	height: 40px;
+	background-color: crimson;
+}
+
+.title p{
+    font-size: 27px;
+    font-weight: bold;
+    font-stretch: extra-condensed;
+    margin-right: .5em;
+}
+.itemlist{
+	height: 800px;
+	width: 100%;
+	background-color: darkgrey;
+	display: flex;
+	flex-wrap: wrap;
+    margin-top: 4.75em;
+
+}
+
+.photo{
+	position: relative;
+	width: 100%;
+	height: 50%;
+	overflow: hidden;
+	z-index: 10;
+
+}
+.photo img{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	transform: translate(-50%, -50%);
+
+
+}
+.itemlist li{
+	height: 35%;
+	width: 20%;
+    margin: 0 auto;
+	background-color: thistle;
+	position: relative;
+	list-style: none;
+}
+
+dl{
+	position: absolute;
+	height: 125px;
+	width: 100%;
+	background-color: darkmagenta;
+	bottom: 0;
+
+}
+dd{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+	background-color: goldenrod;
+	text-align: center;
+}
+
+
+.csatxt{
+    height: 500px;
+    width: 100%;
+    background-color: rgba(19, 228, 36, 0.658);
+    justify-content: space-around;
+    padding-top: 0px;
+}
+/* アクセス */
+.access{
+    height: 700px;
+    width: 100%;
+    background-color: rgba(228, 19, 19, 0.658);
+    justify-content: space-around;
+    padding-top: 0px;
+}
+
+.access p{
+	height: 30px;
+	width: 100px;
+	margin: 0 auto;
+	text-align: center;
+    padding: 0.5em;/*文字周りの余白*/
+	color: #010101;/*文字色*/
+	background: #eaf3ff;/*背景色*/
+	border-bottom: solid 3px #516ab6;/*下線*/
+	  
+}
+
+.access a {
+    display: block;
+    width: 45%;
+    height: 45vh;
+    position: relative;
+    overflow: hidden;
+    max-width: 1000px;
+	margin: 0 auto;
+	float: right;
+}
+.access img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 620px;
+	height: auto;
+}
+.access span {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    font-size: 12px;
+    background-color: #fff;
+    color: #333;
+    padding: 0 0.4em;
+    line-height: 1.8;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.businessday{
+    height: 540px;
+    width: 100%;
+    background-color: rgba(172, 228, 19, 0.658);
+    justify-content: space-around;
+	padding-top: 0px;
+	position: relative;
+}
+/* ここからカレンダー */
+
+.carender{
+	width: 51%;
+	height: 50%;
+	float: right;
+}
+
+.vacation{
+	width: 50%;
+	height: 50%;
+	float: right;
+
+}
+
+
+
+
+
+
+footer {
+    width: 100%;
+    height: 230px;
+	background-color: rgba(161, 146, 146, 0.534);
+	position: relative;
+	padding-top: 0px;
+}
+
+.footer-bottom {
+    background: #404040;
+    color: #fff;
+    padding: 2.35em 0 1.4em;
+}
+
+footer .inner {
+    max-width: 980px;
+    display: flex;
+	justify-content: space-between;
+}
+
+
+
+
+
+
+.footer_text{
+	display: flex;
+	width: 100%;
+	height: 50px;
+	background-color: chocolate;
+	position: absolute;
+	bottom: 0;
+	font-size: 12px;
+	color: #DDD;
+}
+
+.footer_text li{
+	list-style-type: none;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+
+}
+
+.footer_text ul li {
+    display: inline;
+}
+
+.last_text{
+	position: absolute;
+    bottom: 0;
+	background-color: bisque;
+	margin: 0 auto;
+	width: 100%;
+    text-align: center;
+}
+
+.pastel_copyright {
+	font-size: 12px;
+}
+
+.inner a {
+	color: #3a3a3a;
+}
