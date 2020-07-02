@@ -370,7 +370,7 @@ nav {
 
 h1{
 	width: 33%;
-	height: 36px;
+	height: 45px;
 	margin: 0 auto;
 	margin-top: 25px;
 	background-color: rgba(128, 255, 0, 0.877);
@@ -396,7 +396,7 @@ h1{
 
 .title p{
 	width: 33%;
-	height: 36px;
+	height: 45px;
     font-size: 27px;
     font-weight: bold;
     font-stretch: extra-condensed;
@@ -492,7 +492,7 @@ dd{
 }
 
 .access p{
-	height: 36px;
+	height: 45px;
 	width: 33%;
 	font-size: 28px;
 	margin: 0 auto;
@@ -578,7 +578,7 @@ dd{
 /* ここからカレンダー */
 
 .businessday p{
-	height: 36px;
+	height: 45px;
 	width: 33%;
 	font-size: 28px;
 	margin: 0 auto;
