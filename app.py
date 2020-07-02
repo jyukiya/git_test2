@@ -174,6 +174,7 @@ def purchase():
 
         c.execute("select 漢字氏名 from user where id =?",(user_id,))
         購入者名=c.fetchone()
+        購入者名=購入者名[0]
         購入者名=str(購入者名)
         # print(購入者名)
         c.execute("insert into 購入履歴 values (null,?,?,?,?,?,?,?,?,?)",(user_id,購入者名,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,))
@@ -281,6 +282,7 @@ def cart_purchase():
 
         c.execute("select 漢字氏名 from user where id =?",(user_id,))
         購入者名=c.fetchone()
+        購入者名=購入者名[0]
         購入者名=str(購入者名)
         
         c.execute("insert into 購入履歴 values (null,?,?,?,?,?,?,?,?,?)",(user_id,購入者名,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,))
