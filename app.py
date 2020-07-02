@@ -171,7 +171,12 @@ def purchase():
         
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
-        c.execute("insert into 購入履歴 values (null,?,?,?,?,?,?,?,?)",(user_id,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,))
+
+        c.execute("select 漢字氏名 from user where id =?",(user_id,))
+        購入者名=c.fetchone()
+        購入者名=str(購入者名)
+        # print(購入者名)
+        c.execute("insert into 購入履歴 values (null,?,?,?,?,?,?,?,?,?)",(user_id,購入者名,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,))
         conn.commit()
         conn.close()
         return redirect('/purchase_list')
@@ -273,7 +278,12 @@ def cart_purchase():
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
         c.execute("update カート set del_flag = 1 where 注文番号=?", (注文番号,))
-        c.execute("insert into 購入履歴 values (null,?,?,?,?,?,?,?,?)",(user_id,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,))
+
+        c.execute("select 漢字氏名 from user where id =?",(user_id,))
+        購入者名=c.fetchone()
+        購入者名=str(購入者名)
+        
+        c.execute("insert into 購入履歴 values (null,?,?,?,?,?,?,?,?,?)",(user_id,購入者名,time,商品id,商品名,個数,税抜き価格,税込み価格,合計金額,))
       
 
         conn.commit()
@@ -430,10 +440,10 @@ def purchase_history():
     if 'admin_id' in session :
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
-        c.execute("select 注文番号,購入者id,購入年月日,商品id,商品名,数量,税抜き価格,税込み価格,合計金額 from 購入履歴")
+        c.execute("select 注文番号,購入者id,購入年月日,商品id,商品名,数量,税抜き価格,税込み価格,合計金額,購入者名 from 購入履歴")
         comment_list = []
         for row in c.fetchall():
-            comment_list.append({"注文番号": row[0], "購入者id": row[1], "購入年月日": row[2], "商品id": row[3], "商品名": row[4], "数量": row[5], "税抜き価格": row[6], "税込み価格": row[7], "合計金額": row[8]})
+            comment_list.append({"注文番号": row[0], "購入者id": row[1], "購入年月日": row[2], "商品id": row[3], "商品名": row[4], "数量": row[5], "税抜き価格": row[6], "税込み価格": row[7], "合計金額": row[8], "購入者名": row[9]})
 
         c.close()
         return render_template('purchase_history.html'  , comment_list = comment_list)
