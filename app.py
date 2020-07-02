@@ -14,9 +14,19 @@ app = Flask(__name__)
 # Flask では標準で Flask.secret_key を設定すると、sessionを使うことができます。この時、Flask では session の内容を署名付きで Cookie に保存します。
 app.secret_key = 'sunabakoza'
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def index():
-    return render_template('index.html')
+    conn = sqlite3.connect('niseco.db')
+    c = conn.cursor()
+    c.execute("select id,商品名,税抜き価格,税込み価格,商品画像 from 商品")
+    comment_list = []
+    for row in c.fetchall():
+        comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4]})
+
+    c.close()
+    return render_template('index.html', comment_list = comment_list)
+
+
 
 
 # GET  /register => 登録画面を表示

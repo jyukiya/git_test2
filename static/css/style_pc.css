@@ -407,13 +407,14 @@ h1{
 	font-family: "FOT-筑紫Aオールド明朝 Pr6 R", "ヒラギノ明朝 Pro W3", "ＭＳ Ｐ明朝", "MS PMincho", "Hiragino Mincho Pro", serif;
 }
 .itemlist{
-	height: 800px;
-	width: 100%;
-	/* background-color: darkgrey; */
-	display: flex;
-	flex-wrap: wrap;
-	margin-top: 1.75em;
-	padding-right: 0%;
+	max-height: 800px;
+    width: 100%;
+    /* background-color: darkgrey; */
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2.75em;
+    margin-top: 1.75em;
+    padding-right: 0%;
 
 }
 
@@ -753,7 +754,7 @@ footer .inner {
     border-color: black;
 }
 
-img.purchase_img {
+.purchase_img {
 	height: 100px;
 	width: 150px;
 }
@@ -939,4 +940,12 @@ table{
 }
 
 
+text itemName price
 
+.text .itemName{
+	margin: 5px;
+}
+
+.text .price{
+	margin: 5px;
+}
