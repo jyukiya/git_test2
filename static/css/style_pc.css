@@ -684,6 +684,16 @@ img.purchase_img3 {
 }
 
 
+/* 登録済み商品 */
+#syouhin_touroku{
+	margin: 0 150px;
+}
+
+
+
+table{
+	margin: auto;
+}
 
 /* 購入履歴 */
 .contents_list{
