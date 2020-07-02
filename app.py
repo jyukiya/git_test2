@@ -129,10 +129,10 @@ def purchase_page(id):
         # print(id)
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
-        c.execute("select id,商品名,税抜き価格,税込み価格,商品画像 from 商品 where id =?", (id,))
+        c.execute("select id,商品名,税抜き価格,税込み価格,商品画像,商品説明,栄養成分表示,原材料,賞味期限 from 商品 where id =?", (id,))
         comment_list = []
         for row in c.fetchall():
-            comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4]})
+            comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4], "商品説明": row[5], "栄養成分表示": row[6], "原材料": row[7], "賞味期限": row[8]})
             
         c.close()
         return render_template('purchase.html' , comment_list = comment_list)
@@ -383,6 +383,11 @@ def commodity_add():
     税込み価格 = 税抜き価格/10+税抜き価格
     print(税込み価格)
 
+    商品説明 = request.form.get("商品説明")
+    栄養成分表示 = request.form.get("栄養成分表示")
+    原材料 = request.form.get("原材料")
+    賞味期限 = request.form.get("賞味期限")
+
 
     # 以下画像登録
     # bbs.tplのinputタグ name="upload" をgetしてくる
@@ -406,7 +411,7 @@ def commodity_add():
     conn = sqlite3.connect('niseco.db')
     c = conn.cursor()
     # DBにデータを追加する
-    c.execute("insert into 商品 values (null,?,?,?,?,?)", (商品名,税抜き価格,税込み価格,time,filename,))
+    c.execute("insert into 商品 values (null,?,?,?,?,?,?,?,?,?)", (商品名,税抜き価格,税込み価格,time,filename,商品説明,栄養成分表示,原材料,賞味期限,))
     # c.execute("insert into 商品 values (null,null,null,null,null)")
     
     conn.commit()

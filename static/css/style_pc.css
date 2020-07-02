@@ -557,16 +557,17 @@ img.purchase_img2 {
 }
 
 .product_price{
-	margin-top: 25px;
+	margin-top: 35px;
 	color: rgb(235, 60, 29);
 }
 
 .product_date{
-	margin-top: 20px;
+	margin-top: 30px;
 }
 
 .purchase_quantity {
 	width: 40px;
+	height: 20px;
 }
 
 .product_description{
@@ -588,6 +589,48 @@ img.purchase_img2 {
 .cart_in_button{
 	width: 110px;
 }
+
+#about_product{
+	width: 1200px;
+	margin: 90px 175px 25px 175px;
+	text-align: left;
+	border: solid;
+    border-color: #e5e5e5;
+}
+
+.min_title{
+	font-size: 25px;
+}
+
+.setsumei_naiyou{
+	font-size: 20px;
+}
+
+.naiyou{
+	font-size: 15px;
+}
+
+#setsumei{
+	border: solid;
+	border-color: #e5e5e5;
+}
+
+#eiyou{
+	border: solid;
+	border-color: #e5e5e5;
+}
+
+#zairyou{
+	border: solid;
+	border-color: #e5e5e5;
+}
+
+#kigen{
+	border: solid;
+	border-color: #e5e5e5;
+}
+
+
 
 /* カートページ */
 #shopping_cart{
@@ -631,6 +674,7 @@ img.purchase_img3 {
 .cart_quantity{
 	height:30px;
 }
+
 
 
 /* 購入履歴 */

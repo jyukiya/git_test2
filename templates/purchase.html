@@ -34,19 +34,27 @@
 
     </div>
   </div>
-  <!-- <div class="product_description">
-    <p class="min_title">商品説明</p>
-    <p>商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ
-      商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ商品の説明だよ
-    </p>
-  </div>
+  <div id="about_product">
+    <div id="setsumei">
+      <p class="min_title">商品説明</p>
+      <p class="setsumei_naiyou">{{item['商品説明']}}</p>
+    </div>
 
-  <div class="product_Returns">
-    <p class="min_title">返品について</p>
-    <p>返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ
-      返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ返品についてだよ
-    </p>
-  </div> -->
+    <div id="eiyou">
+      <p class="min_title">栄養成分表示</p>
+      <p class="naiyou">{{item['栄養成分表示']}}</p>
+    </div>
+
+    <div id="zairyou">
+      <p class="min_title">原材料</p>
+      <p class="naiyou">{{item['原材料']}}</p>
+    </div>
+
+    <div id="kigen">
+      <p class="min_title">賞味期限</p>
+      <p class="naiyou">{{item['賞味期限']}}</p>
+    </div>
+  </div>
 
 
   {% endfor %}
@@ -54,3 +62,5 @@
 
 </div>
 {% endblock %}
+
+<!-- 商品説明,栄養成分表示,原材料,賞味期限  -->
