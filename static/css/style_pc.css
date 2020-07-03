@@ -785,7 +785,7 @@ footer .inner {
 }
 
 .purchase_img {
-	height: 100px;
+	height: 120px;
 	width: 150px;
 }
 
@@ -794,6 +794,9 @@ footer .inner {
     height: 40px;
 }
 
+.itemName{
+	margin-top: 10px;
+}
 
 
 /* 購入ページ */
