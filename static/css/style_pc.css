@@ -608,7 +608,11 @@ dd{
 }
 
 
-
+.time ul li{
+	width: 36%;
+	font-size: 26px;
+	font-family: "FOT-筑紫Aオールド明朝 Pr6 R", "ヒラギノ明朝 Pro W3", "ＭＳ Ｐ明朝", "MS PMincho", "Hiragino Mincho Pro", serif;
+}
 
 
 
