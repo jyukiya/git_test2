@@ -145,10 +145,10 @@ def purchase_page(id):
         # print(id)
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
-        c.execute("select id,商品名,税抜き価格,税込み価格,商品画像,商品説明,栄養成分表示,原材料,賞味期限 from 商品 where id =?", (id,))
+        c.execute("select id,商品名,税抜き価格,税込み価格,商品画像,商品説明,栄養成分表示,原材料,賞味期限,保存方法 from 商品 where id =?", (id,))
         comment_list = []
         for row in c.fetchall():
-            comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4], "商品説明": row[5], "栄養成分表示": row[6], "原材料": row[7], "賞味期限": row[8]})
+            comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4], "商品説明": row[5], "栄養成分表示": row[6], "原材料": row[7], "賞味期限": row[8], "保存方法": row[9]})
             
         c.close()
         return render_template('purchase.html' , comment_list = comment_list)
@@ -162,10 +162,10 @@ def purchase_page_prime(id):
         # print(id)
         conn = sqlite3.connect('niseco.db')
         c = conn.cursor()
-        c.execute("select id,商品名,税抜き価格,税込み価格,商品画像,商品説明,栄養成分表示,原材料,賞味期限 from 商品 where id =?", (id,))
+        c.execute("select id,商品名,税抜き価格,税込み価格,商品画像,商品説明,栄養成分表示,原材料,賞味期限,保存方法 from 商品 where id =?", (id,))
         comment_list = []
         for row in c.fetchall():
-            comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4], "商品説明": row[5], "栄養成分表示": row[6], "原材料": row[7], "賞味期限": row[8]})
+            comment_list.append({"id": row[0],"商品名": row[1], "税抜き価格": row[2], "税込み価格": row[3], "商品画像": row[4], "商品説明": row[5], "栄養成分表示": row[6], "原材料": row[7], "賞味期限": row[8], "保存方法": row[9]})
             
         c.close()
         return render_template('purchase_prime.html' , comment_list = comment_list)
@@ -511,6 +511,7 @@ def commodity_add():
     栄養成分表示 = request.form.get("栄養成分表示")
     原材料 = request.form.get("原材料")
     賞味期限 = request.form.get("賞味期限")
+    保存方法 = request.form.get("保存方法")
 
 
     # 以下画像登録
@@ -535,7 +536,7 @@ def commodity_add():
     conn = sqlite3.connect('niseco.db')
     c = conn.cursor()
     # DBにデータを追加する
-    c.execute("insert into 商品 values (null,?,?,?,?,?,?,?,?,?)", (商品名,税抜き価格,税込み価格,time,filename,商品説明,栄養成分表示,原材料,賞味期限,))
+    c.execute("insert into 商品 values (null,?,?,?,?,?,?,?,?,?,?)", (商品名,税抜き価格,税込み価格,time,filename,商品説明,栄養成分表示,原材料,賞味期限,保存方法,))
     # c.execute("insert into 商品 values (null,null,null,null,null)")
     
     conn.commit()
