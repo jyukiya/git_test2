@@ -376,7 +376,7 @@ nav {
 	justify-content: center; 
 	align-items: center;
 	z-index: 300;
-    color: rgba(104, 104, 214, 0.651);
+    color: black
 	font-size: 40px;
 	animation: fadeout 7.5s ease 1s 1 forwards;
 	font-family: "FOT-筑紫Aオールド明朝 Pr6 R", "ヒラギノ明朝 Pro W3", "ＭＳ Ｐ明朝", "MS PMincho", "Hiragino Mincho Pro", serif;
