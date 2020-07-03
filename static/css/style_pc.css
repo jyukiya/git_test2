@@ -361,6 +361,34 @@ nav {
 }
   /* スライドショー終わり */
 
+.id_hello{
+	height: auto;
+	position: relative;
+}  
+.id_hello p{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: -330px;
+	left: 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center; 
+	align-items: center;
+	z-index: 300;
+    color: rgba(104, 104, 214, 0.651);
+	font-size: 40px;
+	animation: fadeout 7.5s ease 1s 1 forwards;
+	font-family: "FOT-筑紫Aオールド明朝 Pr6 R", "ヒラギノ明朝 Pro W3", "ＭＳ Ｐ明朝", "MS PMincho", "Hiragino Mincho Pro", serif;
+
+}
+@keyframes fadeout { /*animetion-nameで設定した値を書く*/
+
+	0% {opacity: 1} /*アニメーション開始時は不透明度0%*/
+  
+	100% {opacity: 0} /*アニメーション終了時は不透明度100%*/
+  
+  }
 .toppic{
 	position: relative;
 	height: 300px;
