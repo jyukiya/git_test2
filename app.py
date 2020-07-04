@@ -1,19 +1,17 @@
 import os
 # splite3をimportする
 import sqlite3
-# import math
 # flaskをimportしてflaskを使えるようにする
 from flask import Flask , render_template , request , redirect , session
-
-from datetime import datetime
-from tkinter import messagebox
-
-
 # appにFlaskを定義して使えるようにしています。Flask クラスのインスタンスを作って、 app という変数に代入しています。
 app = Flask(__name__)
 
 # Flask では標準で Flask.secret_key を設定すると、sessionを使うことができます。この時、Flask では session の内容を署名付きで Cookie に保存します。
 app.secret_key = 'sunabakoza'
+
+from datetime import datetime
+import math
+
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -195,7 +193,7 @@ def purchase():
 
         # 税込み価格の計算
         税込み価格 = 税抜き価格/10+税抜き価格
-        # 税込み価格=math.floor(税込み価格)
+        税込み価格=math.floor(税込み価格)
         print(税込み価格)
         # 合計金額の計算
         合計金額 = 税込み価格*個数
@@ -241,7 +239,7 @@ def purchase_prime():
 
         # 税込み価格の計算
         税込み価格 = 税抜き価格/10+税抜き価格
-        # 税込み価格=math.floor(税込み価格)
+        税込み価格=math.floor(税込み価格)
         print(税込み価格)
         # 合計金額の計算
         合計金額 = 税込み価格*個数
@@ -305,7 +303,7 @@ def cart_in():
         個数=int(個数)
         # 税込み価格の計算
         税込み価格 = 税抜き価格/10+税抜き価格
-        # 税込み価格=math.floor(税込み価格)
+        税込み価格=math.floor(税込み価格)
         print(税込み価格)
         # 合計金額の計算
         合計金額 = 税込み価格*個数
@@ -342,7 +340,7 @@ def cart_in_prime():
         個数=int(個数)
         # 税込み価格の計算
         税込み価格 = 税抜き価格/10+税抜き価格
-        # 税込み価格=math.floor(税込み価格)
+        税込み価格=math.floor(税込み価格)
         print(税込み価格)
         # 合計金額の計算
         合計金額 = 税込み価格*個数
@@ -381,7 +379,7 @@ def cart_purchase():
 
         # 税込み価格の計算
         税込み価格 = 税抜き価格/10+税抜き価格
-        # 税込み価格=math.floor(税込み価格)
+        税込み価格=math.floor(税込み価格)
         print(税込み価格)
         # 合計金額の計算
         合計金額 = 税込み価格*個数
@@ -504,7 +502,7 @@ def commodity_add():
     税抜き価格=int(税抜き価格)
     # 税込み価格の計算
     税込み価格 = 税抜き価格/10+税抜き価格
-    # 税込み価格=math.floor(税込み価格)
+    税込み価格=math.floor(税込み価格)
     print(税込み価格)
 
     商品説明 = request.form.get("商品説明")
