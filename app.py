@@ -2,8 +2,9 @@ import os
 # splite3をimportする
 import sqlite3
 # flaskをimportしてflaskを使えるようにする
-from flask import Flask , render_template , request , redirect 
+from flask import Flask , render_template , redirect #, request #,session
 
+# from datetime import datetime
 from tkinter import messagebox
 
 
